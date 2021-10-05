@@ -115,7 +115,7 @@ class Enrollment(models.Model):
     #    else:
     #        return False
 
-class Question(model.Model):
+class Question(models.Model):
     GRADE = 1.0
 
     def is_get_score(self, selected_ids):
@@ -140,7 +140,7 @@ class Question(model.Model):
 # class Choice(models.Model):
 
 class Choice(models.Model):   
-    question_id = models.ForeignKey(Question)
+    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=500, default="Sample text.")
     is_correct = models.IntegerField(default=0)
 
