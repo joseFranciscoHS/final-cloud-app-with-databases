@@ -126,7 +126,7 @@ class Question(models.Model):
         return False
 
 
-    lesson_id = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+    lesson_id = models.ForeignKey(Course, on_delete=models.CASCADE)
     question_text = models.CharField(max_length=500)
     grade = models.FloatField(default=GRADE)
 
@@ -139,7 +139,8 @@ class Question(models.Model):
     # Other fields and methods you would like to design
 # class Choice(models.Model):
 
-class Choice(models.Model):   
+class Choice(models.Model):
+    lesson_id = models.ForeignKey(Course, on_delete=models.CASCADE)
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=500, default="Sample text.")
     is_correct = models.IntegerField(default=0)
